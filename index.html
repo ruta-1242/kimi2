@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>君津検定</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <!-- Start Screen -->
+  <div id="start-screen" class="screen active">
+    <h1 class="title">君津検定</h1>
+    <button id="start-btn" class="primary-btn">クイズ開始</button>
+  </div>
+
+  <!-- Quiz Screen -->
+  <div id="quiz-screen" class="screen hidden">
+    <div id="progress" class="progress"></div>
+    <div id="question" class="question"></div>
+    <div id="options" class="options"></div>
+  </div>
+
+  <!-- Result Screen -->
+  <div id="result-screen" class="screen hidden">
+    <h2>結果発表</h2>
+    <p id="score-text"></p>
+    <p id="rank-text"></p>
+    <button id="retry-btn" class="secondary-btn">再挑戦</button>
+    <button id="share-btn" class="secondary-btn">SNSで共有</button>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="./questions.js"></script>
+  <script src="./app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>
